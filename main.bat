@@ -1,0 +1,1 @@
+conda activate mms && python E:\MCSTATUS\mcstatus.py

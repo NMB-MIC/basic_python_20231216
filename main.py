@@ -1,0 +1,2 @@
+from report_daily import report_sale_amount
+report_sale_amount()
