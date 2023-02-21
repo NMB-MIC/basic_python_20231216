@@ -33,3 +33,19 @@ def process_cap():
     fig.savefig(filtered_image, format="JPEG")
     filtered_image.seek(0)
     return StreamingResponse(filtered_image, media_type="image/jpeg")
+
+@app.get("/cp_result")
+def process_cap():
+    """return image process cap"""
+    from process_cap import process_capability
+    import numpy as np
+
+    data = np.random.normal(loc=5,scale=1,size=100)
+
+    result,cp,cpk,z,sample_mean,sample_std,sample_max,sample_min,sample_median,pct_below_LSL,pct_above_USL = process_capability(data,pic=False)
+
+    return {"result":result,"cp":cp,"cpk":cpk,"z":z,
+    "sample_mean":sample_mean,"sample_std":sample_std,"sample_max":sample_max,
+    "sample_min":sample_min,"sample_median":sample_median,"pct_below_LSL":pct_below_LSL,"pct_above_USL":pct_above_USL}
+
+# %%

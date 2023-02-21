@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import norm
 
-def process_capability(data):
+def process_capability(data,pic=True):
     """calculate process capability 
     then return fig and some param """
 
@@ -80,4 +80,7 @@ def process_capability(data):
     plt.text(max(x), max(y)-0.04, f'cpk: {round(cpk,2)}',color=cpk_color, fontsize=18)
     #plt.savefig("export/process_capability.png")
     #plt.show()
-    return fig
+    if pic==True:
+        return fig
+    else:
+        return total_result,round(cp,2),round(cpk,2),round(z,2),round(sample_mean,2),round(sample_std,2),round(sample_max,2),round(sample_min,2),round(sample_median,2),round(pct_below_LSL,2),round(pct_above_USL,2)
