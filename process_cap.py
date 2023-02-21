@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.stats import norm
 
-
-
 def process_capability(data):
     """calculate process capability 
     then return fig and some param """
