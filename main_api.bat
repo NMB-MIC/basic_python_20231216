@@ -1,0 +1,1 @@
+conda activate basic_python && uvicorn main_api:app --host 192.168.1.102 --reload
