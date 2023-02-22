@@ -73,3 +73,17 @@ def test_post(mc_no):
 
 #result -> "no data machine"
     
+@app.post("/oee")
+def oee(date,machine_no):
+    from oee import oee_chart
+    from io import BytesIO
+    from fastapi.responses import StreamingResponse
+    filtered_image = BytesIO()
+    result = oee_chart(date,machine_no)
+    
+    if type(result) == str:
+        return {"error":result}
+    else:
+        result.savefig(filtered_image, format="JPEG")
+        filtered_image.seek(0)
+        return StreamingResponse(filtered_image, media_type="image/jpeg")
